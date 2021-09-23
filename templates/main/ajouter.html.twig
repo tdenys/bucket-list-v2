@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un souhait{% endblock %}
+
+{% block body %}
+    <h1>Ajouter un souhait</h1>
+    {{ form_start(formWish) }}
+
+    {{ form_widget(formWish) }}
+    <button type="submit" class="btn btn-success">
+        Ajouter
+    </button>
+    {{ form_end(formWish) }}
+{% endblock %}

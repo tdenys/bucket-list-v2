@@ -1,0 +1,42 @@
+{% extends('base.html.twig') %}
+
+{% block body %}
+
+    <container class="m-5">
+        <a class="btn btn-success mt-5" href="{{ path('ajouter') }}">Ajouter un souhait</a>
+        <table class="table m-5 text-center">
+            <thead class="thead-dark">
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Author</th>
+                <th>Date created</th>
+                <th>Category</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {%  for w in wishes %}
+                <tr>
+                    <td>{{ w.id }}</td>
+                    <td>{{ w.title }}</td>
+                    <td>{{ w.description }}</td>
+                    <td>{{ w.author }}</td>
+                    <td>{{ w.dateCreated | date("m/d/Y") }}</td>
+                    {% if w.category %}
+                    <td>{{ w.category.name }}</td>
+                    {% endif %}
+                    {% if w.category == null %}
+                        <td></td>
+                    {% endif %}
+                    <td>
+                        <a href="{{ path('detail', {id: w.id }) }}" class="btn btn-primary">+</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </container>
+
+{% endblock %}
